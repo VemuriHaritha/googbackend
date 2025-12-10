@@ -18,6 +18,7 @@ app.post("/api/assist", async (req, res) => {
     const { userText } = req.body;
 
     const auth = new GoogleAuth({
+      credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS),
       scopes: "https://www.googleapis.com/auth/cloud-platform",
     });
     const client = await auth.getClient();
@@ -40,5 +41,6 @@ app.post("/api/assist", async (req, res) => {
     res.status(500).json({ error: "Gemini call failed" });
   }
 });
+
 
 app.listen(8080, () => console.log("Backend running on port 8080"));
