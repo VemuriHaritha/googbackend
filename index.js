@@ -41,6 +41,10 @@ app.post("/api/assist", async (req, res) => {
     res.status(500).json({ error: "Gemini call failed" });
   }
 });
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
 
 
 app.listen(8080, () => console.log("Backend running on port 8080"));
+
